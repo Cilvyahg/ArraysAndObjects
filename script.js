@@ -1,6 +1,8 @@
 'use strict';
 const log = console.log;
 
+import { styleBinding } from '@muban/muban/types/lib/bindings/dom/styleBinding.js';
+import { setBlockTracking } from '@vue/runtime-core';
 import { randomPersonData } from './randomPersonData.js';
 log(randomPersonData);
 
@@ -32,16 +34,15 @@ countryListBtn.addEventListener('click', (e) => {
 });
 
 // ==== Capricorn women ====
-// needs to be a woman
-// older than 30(1990 or older) // NOG DOEN
-// be a capricorn (birthday from december 22 - 19 january) // NOG DOEN
-//  sort//
+//  sort ON FIRST NAME: NOG DOEN!!!!
+// when push on button one dissapears
 
 const capribtn = document.querySelector('.capricorn');
 
 const capriLoop = function (array) {
   const UL = document.createElement('ul');
   capribtn.append(UL);
+  UL.classList.add('non-bullet');
 
   for (let element of array) {
     const LI = document.createElement('LI');
@@ -61,7 +62,7 @@ const capricorn = function (listOfPeople) {
     (person) =>
       person.gender.includes('female') && // ipv ===
       person.age > 30 &&
-      isCapricorn(person.birthday.dmy) // want filter wilt een boolean true or false 
+      isCapricorn(person.birthday.dmy) // want filter wilt een boolean true or false
   );
   capriLoop(capricornWomenOlderThan30); // hoeft geen return te doen want capriloop heeft geen return.
 };
@@ -70,14 +71,9 @@ capribtn.addEventListener('click', () => {
   capricorn(randomPersonData);
 });
 
-
 let mybday1 = '12/5/1989';
 let mybday2 = '21/12/1989';
 let mybday5 = '21/10/1989';
-
-console.log('aaaabaaaaabababababa'.split('b')); // b wordt gebruikt als scheidingsteken/ seperator
-
-
 
 const isCapricorn = function (birthday) {
   const splitDate = birthday.split('/', 2);
@@ -90,6 +86,68 @@ const isCapricorn = function (birthday) {
   return false; // buiten de if statement (dus niet een else {}) op deze manier return je altijd iets // by default
 };
 
-
 log(isCapricorn(mybday2));
 log(isCapricorn(mybday5));
+
+
+
+
+// ALS JE EEN KNOPT KLIKT DUS ALLE KNOPPEN DICHT
+//en dan ul DISPLAY NONE EN OF BLOCK WANNEER EEN KNOP WORD GEKLIKT.
+//add toggleClass 
+
+//buttons.forEach(button) {
+  // if style.display === 'none' {
+  // display style block
+  //}
+
+//}
+
+/// https://w3bits.com/javascript-toggle-display/ LEZEN!!! 
+
+
+
+
+
+
+
+
+
+
+
+
+// ==== conditionals ====
+
+if (1 !== 1) {
+  log('true');
+}
+
+let highScore = 1430;
+let userScore = 1200;
+
+if (userScore >= highScore) {
+  log(highScore);
+  log(`congratz you have a new highscore ${userScore}`);
+  highScore = userScore;
+} else {
+  log(
+    `good game you score of ${userScore} did not beat the highscore of ${highScore}`
+  );
+}
+
+
+
+
+
+// we can nest conditionals into otger conditionals. 
+let password = 'hello kitty'; 
+
+if (password.length >= 6) {
+  if (password.indexOf(' ') === -1) {
+    log('valid password');
+  } else {
+    log(`password is long enough but cannot contain spaces`);
+  }
+} else {
+  log('password must be longer');
+}
