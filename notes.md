@@ -29,3 +29,11 @@ targetElement.insertAdjancentElement('position', element)
 'afterbegin': Just inside the targetElement, before its first child.
 'beforeend': Just inside the targetElement, after its last child.
 'afterend': After the targetElement itself.
+
+### append
+append is different from appendChild because you can insert multiple eleme nts.
+
+append and prepend will still be a child of the element. append is after
+
+### prepend
+prepend is child before the element. 
