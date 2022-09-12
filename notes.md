@@ -19,6 +19,25 @@ log(randomPersonData);
 filter returns a boolean / true of false en return a new array 
 
 
+### === if statement is 22 december - 19 january === is capricorn
+```
+// const isCapricorn = function (birthday) {
+//   const splitDate = birthday.split('/');
+
+//   if (splitDate[1] === '12') {
+//     if (splitDate[0] >= 22) {
+//       return true;
+//     }
+//   } else if (splitDate[1] === '01' ) {
+//     if (splitDate[0] <= 19) {
+//       return true;
+//     }
+//   }
+//   return false; // buiten de if statement (dus niet een else {}) op deze manier return je altijd iets // by default
+// };
+
+```
+
 ## DOM 
 
 #### insertAdjancentElement()
@@ -37,3 +56,13 @@ append and prepend will still be a child of the element. append is after
 
 ### prepend
 prepend is child before the element. 
+
+
+## split()
+
+syntax :
+str.split(separator, limit)
+
+```
+log(randomPersonData[1].birthday.dmy.split('/'));
+```
