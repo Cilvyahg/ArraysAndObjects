@@ -8,6 +8,7 @@ log(randomPersonData);
 
 
 const ULcontent = function (ul) {
+
   if (ul.style.display === 'block') {
     ul.classList.add('hide-content');
   }
@@ -17,14 +18,15 @@ const ULcontent = function (ul) {
   }
 };
 
-// const allButtons = document.querySelectorAll('button');
+const allButtons = document.querySelectorAll('button');
 
-// const btnClick = function () {
-//   for (let button of allButtons) {
-//     button.addEventListener('click', ULcontent);
-//   }
-// };
-
+const btnClick = function () {
+  for (let button of allButtons) {
+    button.addEventListener('click', (ul) => {
+      ULcontent(ul)
+    });
+  }
+};
 
 
 const countryListBtn = document.querySelector('.countryList');
