@@ -1,12 +1,27 @@
 'use strict';
 const log = console.log;
 
-import { styleBinding } from '@muban/muban/types/lib/bindings/dom/styleBinding.js';
-import { setBlockTracking } from '@vue/runtime-core';
 import { randomPersonData } from './randomPersonData.js';
 log(randomPersonData);
 
 //==== 1 COUNTRY LIST ====
+
+const allButtons = document.querySelectorAll('button');
+log(allButtons)
+
+const buttonDisplay = (element) => {
+   allButtons.forEach(function (button)  {
+    log(allButtons);
+    if (element.style.display === 'block') {
+      element.style.display === 'none';
+    } else {
+      element.style.display = 'block';
+    }
+  });
+};
+
+
+
 
 const countryListBtn = document.querySelector('.countryList');
 
@@ -24,7 +39,7 @@ const countries = (array) => {
     const LI = document.createElement('li');
     LI.innerText = `${country}`;
     UL.appendChild(LI);
-  }
+  };
   return countryMap;
 };
 
@@ -32,6 +47,8 @@ countryListBtn.addEventListener('click', (e) => {
   countries(randomPersonData);
   log(e);
 });
+
+
 
 // ==== Capricorn women ====
 //  sort ON FIRST NAME: NOG DOEN!!!!
@@ -89,32 +106,16 @@ const isCapricorn = function (birthday) {
 log(isCapricorn(mybday2));
 log(isCapricorn(mybday5));
 
-
-
-
 // ALS JE EEN KNOPT KLIKT DUS ALLE KNOPPEN DICHT
 //en dan ul DISPLAY NONE EN OF BLOCK WANNEER EEN KNOP WORD GEKLIKT.
-//add toggleClass 
+//add toggleClass
 
 //buttons.forEach(button) {
-  // if style.display === 'none' {
-  // display style block
-  //}
-
+// if style.display === 'none' {
+// display style block
 //}
 
-/// https://w3bits.com/javascript-toggle-display/ LEZEN!!! 
-
-
-
-
-
-
-
-
-
-
-
+//}
 
 // ==== conditionals ====
 
@@ -135,12 +136,8 @@ if (userScore >= highScore) {
   );
 }
 
-
-
-
-
-// we can nest conditionals into otger conditionals. 
-let password = 'hello kitty'; 
+// we can nest conditionals into otger conditionals.
+let password = 'hello kitty';
 
 if (password.length >= 6) {
   if (password.indexOf(' ') === -1) {

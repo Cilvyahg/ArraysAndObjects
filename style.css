@@ -8,7 +8,14 @@ button {
   margin-bottom: 0.5rem;
 }
 
-
 .non-bullet {
   list-style-type: none;
+}
+
+.show-content {
+  display: block;
+}
+
+.hide-content {
+  display: none;
 }
