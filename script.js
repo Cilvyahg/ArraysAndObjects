@@ -121,37 +121,6 @@ log(isCapricorn(mybday5));
 
 //}
 
-// ==== conditionals ====
-
-if (1 !== 1) {
-  log('true');
-}
-
-let highScore = 1430;
-let userScore = 1200;
-
-if (userScore >= highScore) {
-  log(highScore);
-  log(`congratz you have a new highscore ${userScore}`);
-  highScore = userScore;
-} else {
-  log(
-    `good game you score of ${userScore} did not beat the highscore of ${highScore}`
-  );
-}
-
-// we can nest conditionals into otger conditionals.
-let password = 'hello kitty';
-
-if (password.length >= 6) {
-  if (password.indexOf(' ') === -1) {
-    log('valid password');
-  } else {
-    log(`password is long enough but cannot contain spaces`);
-  }
-} else {
-  log('password must be longer');
-}
 
 // === SORT Live Les ====
 
