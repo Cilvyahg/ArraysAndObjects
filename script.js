@@ -6,20 +6,24 @@ log(randomPersonData);
 
 //==== 1 COUNTRY LIST ====
 
-const allButtons = document.querySelectorAll('button');
-log(allButtons)
 
-const buttonDisplay = (element) => {
-   allButtons.forEach(function (button)  {
-    log(allButtons);
-    if (element.style.display === 'block') {
-      element.style.display === 'none';
-    } else {
-      element.style.display = 'block';
-    }
-  });
+const ULcontent = function (ul) {
+  if (ul.style.display === 'block') {
+    ul.classList.add('hide-content');
+  }
+  if (ul.style.display === 'none') {
+    ul.classList.remove('hide-content');
+    ul.classList.add('show-content');
+  }
 };
 
+// const allButtons = document.querySelectorAll('button');
+
+// const btnClick = function () {
+//   for (let button of allButtons) {
+//     button.addEventListener('click', ULcontent);
+//   }
+// };
 
 
 
@@ -39,7 +43,7 @@ const countries = (array) => {
     const LI = document.createElement('li');
     LI.innerText = `${country}`;
     UL.appendChild(LI);
-  };
+  }
   return countryMap;
 };
 
@@ -47,8 +51,6 @@ countryListBtn.addEventListener('click', (e) => {
   countries(randomPersonData);
   log(e);
 });
-
-
 
 // ==== Capricorn women ====
 //  sort ON FIRST NAME: NOG DOEN!!!!
@@ -148,3 +150,7 @@ if (password.length >= 6) {
 } else {
   log('password must be longer');
 }
+
+// === SORT Live Les ====
+
+
