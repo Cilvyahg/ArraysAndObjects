@@ -164,3 +164,17 @@ function compareFn(a, b) {
   return 0;
 }
 ```
+
+
+## Map
+
+you have to put a return in the callback function of the array methods. 
+
+
+## events object
+when we have events we have the event object that is the first parameter that comes with a call back function of the addeventlistener. 
+
+
+
+**this** keyword
+this doesnt work with arrow functions

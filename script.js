@@ -16,51 +16,65 @@ const ULcontent = function (ul) {
   }
 };
 
-const allButtons = document.querySelectorAll('button');
-
-const btnClick = function () {
-  for (let button of allButtons) {
-    button.addEventListener('click', (ul) => {
-      ULcontent(ul);
-    });
-  }
-};
+//   let hasClass = ul.classList.contains('block');
+//   if (hasClass) {
+//     ul.classList.remove('show-content');
+//   }
+//   if (!hasClass) {
+//     ul.classList.add('show-content');
+//   }
+// };
 
 const countryListBtn = document.querySelector('.countryList');
 
-const countries = (array) => {
-  const countryMap = array
-    .map((country) => {
-      return country.region;
+const renderCountries = (listOfPeople) => {
+  const countryMap = listOfPeople
+    .map((person) => {
+      return person.region;
     })
     .sort();
 
   const UL = document.createElement('ul');
   countryListBtn.insertAdjacentElement('afterend', UL);
+  UL.id = 'countries-list';
 
   for (let country of countryMap) {
     const LI = document.createElement('li');
     LI.innerText = `${country}`;
     UL.appendChild(LI);
   }
-  return countryMap;
 };
 
-countryListBtn.addEventListener('click', (e) => {
-  countries(randomPersonData);
+const cb = (e) => {
+  renderCountries(randomPersonData);
+  countryListBtn.removeEventListener('click', cb); // wordt hier al op de eerste klik weggehaald en er zit geen eventlistener meer hierop
   log(e);
-});
+};
+
+countryListBtn.addEventListener('click', cb);
+
+const showCountryList = () => {
+  const countryList = document.querySelector('#countries-list');
+  countryList.style.display = 'block';
+  const capriCornWomenList = document.querySelector('#capricorn-women');
+  log(capriCornWomenList);
+
+  if (capriCornWomenList !== null) {
+    // als capricornwomenlist een UL is dan wil je het verbergen
+    capriCornWomenList.style.display = 'none';
+  }
+};
+
+countryListBtn.addEventListener('click', showCountryList);
 
 // ==== Capricorn women ====
-//  sort ON FIRST NAME: NOG DOEN!!!!
-// when push on button one dissapears
 
 const capribtn = document.querySelector('.capricorn');
 
 const capriLoop = function (array) {
   const UL = document.createElement('ul');
-  capribtn.append(UL);
   UL.classList.add('non-bullet');
+  UL.id = 'capricorn-women';
 
   for (let element of array) {
     const LI = document.createElement('LI');
@@ -76,46 +90,50 @@ const capriLoop = function (array) {
 };
 
 const capricorn = function (listOfPeople) {
-  const capricornWomenOlderThan30 = listOfPeople.filter(
-    (person) =>
-      person.gender.includes('female') && // ipv ===
-      person.age > 30 &&
-      isCapricorn(person.birthday.dmy) // want filter wilt een boolean true or false
-  );
-
-  log(capricornWomenOlderThan30)
-  capricornWomenOlderThan30.sort(compareByName)// callback function bij sort() dus je hoeft deze functie niet te invoken
-
-  log(capricornWomenOlderThan30);
-
-  capriLoop(capricornWomenOlderThan30); // hoeft geen return te doen want capriloop heeft geen return.
+  const capricornWomenOlderThan30 = listOfPeople
+    .filter(function (person) {
+      return (
+        person.gender.includes('female') && // ipv ===
+        person.age > 30 &&
+        isCapricorn(person.birthday.dmy)
+      ); // want filter wilt een boolean true or false
+    })
+    .sort(compareByName); // callback function bij sort() dus je hoeft deze functie niet te invoken, want de sort invoked hem.
+  capriLoop(capricornWomenOlderThan30);
 };
 
-
-const compareByName = function (person1, person2) {
+const compareByName = (person1, person2) => {
   if (person1['name'] < person2['name']) {
-    log(` person 1 ${person1['name']}, is smaller than person 2 ${person2['name']}`)
     return -1;
   }
   if (person1['name'] > person2['name']) {
-    log(` person 1 ${person1.name} is bigger than person 2 ${person2.name}`)
     return 1;
-  } else {
-    return 0;
+  }
+  return 0;
+};
+
+const callbackCapricon = function () {
+  capricorn(randomPersonData);
+  capribtn.removeEventListener('click', callbackCapricon); // de click type is verwijderd van de button
+};
+
+capribtn.addEventListener('click', callbackCapricon);
+
+const showCapriCornList = function () {
+  //debugger;
+  const capriCornWomenList = document.querySelector('#capricorn-women'); // HOOFDFUNCTIONALITEIT JE WILT DE CAPRICORN LIJST SHOWEN
+  capriCornWomenList.style.display = 'block';
+  const countriesList = document.querySelector('#countries-list');
+  if (countriesList !== null) {
+    countriesList.style.display = 'none'; // je kan style property niet op null object toepassen
   }
 };
 
-
-
-
-
-capribtn.addEventListener('click', () => {
-  capricorn(randomPersonData);
-});
+capribtn.addEventListener('click', showCapriCornList);
 
 let mybday1 = '12/5/1989';
-let mybday2 = '21/12/1989';
-let mybday5 = '21/10/1989';
+let mybday2 = '21/12/1990';
+let mybday5 = '21/10/1995';
 
 const isCapricorn = function (birthday) {
   const splitDate = birthday.split('/', 2);
@@ -151,5 +169,3 @@ log(letters); // het orginele array is tevens op plaatst gesorteerd en dus gewij
 const complex = ['b', 'a', 'c', 'e', 'd', 'B', 'C', 'ø', 'Ë'];
 const sortedComplex = complex.sort();
 log(sortedComplex); // output: ['B', 'C', 'a', 'b', 'c', 'd', 'e', 'Ë', 'ø'];
-
-
