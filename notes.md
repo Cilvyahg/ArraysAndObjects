@@ -133,3 +133,34 @@ if (password.length >= 6) {
   log('password must be longer');
 }
 ```
+
+### SORT() methode 
+
+the sort() method sorts the elements of an array in place and returns the sorted array. 
+
+bij sort() kun je een functie meegeven, namelijk de compare function. 
+
+de sort() functie zet je indexen om in strings en vandaar dat het 1, 120, 127 4, 432 
+dus wat je krijgt is het de string "1" , de string "120" , de string "4"; vanwege UTF 8 encoding. speciale karakters op het einde. 
+
+je zal meestal sort() gebruiken middels de compareFunction
+
+elke wordt er iets gepakt en eigenlijk gekeken. is dit groter of kleiner dan de ander? 
+SITUATIE::
+je hebt een boekenkast met boeken en die wil je sorteren op  titels (alfabetisch). je bekijkt telkens twee boek titels met elkaar en sorteert ze (of markeert ze ). ALS boek 1 voor de boek 2 moet staan in de boekenkast dan geef je dit een -1 (return je -1). als boek 2 voor boek 1 moet staan dan return je 1.
+als beide boeken gelijk zijn qua titel dan markeer je dit met een 0 (of return je een 0);
+
+SORT(COMPAREFUNCTION);
+
+```
+function compareFn(a, b) {
+  if (a is less than b by some ordering criterion) {
+    return -1;
+  }
+  if (a is greater than b by the ordering criterion) {
+    return 1;
+  }
+  // a must be equal to b
+  return 0;
+}
+```
