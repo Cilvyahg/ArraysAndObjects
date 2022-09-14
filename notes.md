@@ -211,7 +211,32 @@ while loop
 syntax
 
 ```
-while(some condition is true) {
+while(this condition is true) {
 
 }
 ```
+
+
+## For .. in  loop
+
+will loop over the keys of an object. 
+you can use for .. in for an array (since arrays are also objects, but it's better to use another array loop method because the keys will be the indices. so you are looping over the keys, which are the indices. you can use a for .. of 
+1: 233
+2: 5
+3: 38383
+5: 8384)
+
+
+## KEYWORD THIS
+this; think of it as a reference to an object like the global scope. window 
+this can change
+
+this normally refers to the window (the global scope of the browser)
+
+- THE VALUE OF THIS DEPENDS ON THE INVOCATION CONTEXT OF THE FUNCTION IT IS USED IN. 
+it depends on how you call it. 
+
+
+### .style property in the display
+
+if you do this is will be styled inline, it's better to do it with adding class. 

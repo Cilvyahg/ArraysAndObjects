@@ -1,0 +1,7 @@
+.color-li { 
+  color: rgb(223, 45, 208);
+  font-size:1rem;
+  text-decoration: line-through;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  list-style-type: none;
+}
