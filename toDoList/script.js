@@ -105,5 +105,3 @@ const removeParagraph = function () {
   toDoContainer.removeChild(this);
 };
 
-
-//this is the newest tsjsjsjs judt to sheckh
