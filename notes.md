@@ -138,6 +138,8 @@ if (password.length >= 6) {
 
 the sort() method sorts the elements of an array in place and returns the sorted array. 
 
+
+
 bij sort() kun je een functie meegeven, namelijk de compare function. 
 
 de sort() functie zet je indexen om in strings en vandaar dat het 1, 120, 127 4, 432 
@@ -166,6 +168,8 @@ function compareFn(a, b) {
 ```
 
 
+
+
 ## Map
 
 you have to put a return in the callback function of the array methods. 
@@ -178,3 +182,22 @@ when we have events we have the event object that is the first parameter that co
 
 **this** keyword
 this doesnt work with arrow functions
+
+
+=== SORT BY NAME ===
+ capricornWomenOlderThan30.map(function (person) {
+    if (person.name === 'Алла') {
+      log(person)
+      return person.name = "Anna";
+    } else {
+      return
+    }
+  })
+
+  ## creating multiple objects
+with classes instead of manually creating these.
+
+
+
+## LOOPS
+

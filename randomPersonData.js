@@ -741,7 +741,7 @@ export const randomPersonData = [
     photo: 'https://randomuser.me/api/portraits/men/20.jpg',
   },
   {
-    name: 'Алла',
+    name: 'Аnnа',
     surname: 'Евдокимовa',
     gender: 'female',
     region: 'Russia',

@@ -57,7 +57,6 @@ const showCountryList = () => {
   const countryList = document.querySelector('#countries-list');
   countryList.style.display = 'block';
   const capriCornWomenList = document.querySelector('#capricorn-women');
-  log(capriCornWomenList);
 
   if (capriCornWomenList !== null) {
     // als capricornwomenlist een UL is dan wil je het verbergen
@@ -99,6 +98,9 @@ const capricorn = function (listOfPeople) {
       ); // want filter wilt een boolean true or false
     })
     .sort(compareByName); // callback function bij sort() dus je hoeft deze functie niet te invoken, want de sort invoked hem.
+
+  log(capricornWomenOlderThan30);
+
   capriLoop(capricornWomenOlderThan30);
 };
 
@@ -149,10 +151,6 @@ const isCapricorn = function (birthday) {
 log(isCapricorn(mybday2));
 log(isCapricorn(mybday5));
 
-// ALS JE EEN KNOPT KLIKT DUS ALLE KNOPPEN DICHT
-//en dan ul DISPLAY NONE EN OF BLOCK WANNEER EEN KNOP WORD GEKLIKT.
-//add toggleClass
-
 // === SORT Live Les ====
 //  - het wordt op de plaatst gesorteerd, dus het originele array wordt ook aangepast, maar GEEFT ook een nieuwe array terug. Dit is bij andere array Methods niet het geval.
 
@@ -169,3 +167,35 @@ log(letters); // het orginele array is tevens op plaatst gesorteerd en dus gewij
 const complex = ['b', 'a', 'c', 'e', 'd', 'B', 'C', 'ø', 'Ë'];
 const sortedComplex = complex.sort();
 log(sortedComplex); // output: ['B', 'C', 'a', 'b', 'c', 'd', 'e', 'Ë', 'ø'];
+
+// === NESTED FOR LOOPS ===
+
+for (let i = 0; i <= 10; i++) {
+  log('outer loop', i);
+  for (let j = 10; j >= 0; j -= 2) {
+    log('      innerloop', j);
+  }
+}
+
+// the innerloop completes it full cycle. the outer loop just iterates one.
+
+const gameBoard = [
+  [4, 32, 8, 4],
+  [64, 8, 32, 2],
+  [8, 32, 16, 4],
+  [2, 8, 4, 2],
+];
+
+// we need two loops because we have two arrays nested. 
+
+let totalScore = 0;
+// first loop is going to iterate over the outer loop and then the  inner loop
+for (let numbers of gameBoard) {
+  log('outerloop', numbers)
+  for (let number of numbers) {
+    log('innerloop', number)
+    totalScore += number
+    log('totalscore', totalScore)
+  }
+}
+
