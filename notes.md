@@ -199,5 +199,8 @@ with classes instead of manually creating these.
 
 
 
-## LOOPS
+## object 
+
+Objects are reference types just like arrays. so that is why we use const. you can change them by adding properties .. that will also change the reference. 
+
 

@@ -168,7 +168,7 @@ const complex = ['b', 'a', 'c', 'e', 'd', 'B', 'C', 'ø', 'Ë'];
 const sortedComplex = complex.sort();
 log(sortedComplex); // output: ['B', 'C', 'a', 'b', 'c', 'd', 'e', 'Ë', 'ø'];
 
-// === NESTED FOR LOOPS ===
+// === NESTED LOOPS ===
 
 for (let i = 0; i <= 10; i++) {
   log('outer loop', i);
@@ -186,16 +186,83 @@ const gameBoard = [
   [2, 8, 4, 2],
 ];
 
-// we need two loops because we have two arrays nested. 
+// we need two loops because we have two arrays nested.
 
 let totalScore = 0;
 // first loop is going to iterate over the outer loop and then the  inner loop
 for (let numbers of gameBoard) {
-  log('outerloop', numbers)
+  log('outerloop', numbers);
   for (let number of numbers) {
-    log('innerloop', number)
-    totalScore += number
-    log('totalscore', totalScore)
+    log('innerloop', number);
+    totalScore += number;
+    log('totalscore', totalScore);
   }
 }
 
+// Object: adding and updating properties
+
+const userReviews = {}; // empty object
+
+userReviews['queenBee49'] = 4.0; // kan met de bracket en quotation notation
+userReviews.majorie92 = 6.5; // kan ook met een dot notation
+
+//updating properties
+userReviews['queenBee49'] += 2;
+
+log(userReviews);
+
+log('27/11/1992'.split('', 2));
+
+// NESTED ARRAYS AND OBJECTS
+
+const student = {
+  firstName: 'David',
+  lastName: 'Jones',
+  strength: ['Music', 'Art'],
+  exams: {
+    midterm: 92,
+    final: 88,
+  },
+};
+
+// how to access and find the average of midterm and final
+
+const averageExamGrade = (student.exams.midterm + student.exams.final) / 2;
+log(averageExamGrade); // output 90;
+
+// array of objects
+
+const shoppingCart = [
+  {
+    product: 'Jenga Classics',
+    price: 6.88,
+    quantity: 1,
+  },
+  {
+    product: 'Echo Dot',
+    price: 29.99,
+    quantity: 3,
+  },
+  {
+    product: 'Fire Stick',
+    price: 39.99,
+    quantity: 2,
+  },
+];
+
+log(shoppingCart[0]['price']);
+
+// REFERENCE TYPES
+// javascript is storing the value of the variable into a memory that is why these reference numbers from these both variables are different although the value looks the same. but it has it own unique place of memory
+// so in memory it would look like this , it gets a reference no under what
+// nums --> ref 1234783893  and mystery --> ref 287728298292 , so therefore you get false when comparing the two values
+
+const nums = [1, 2, 3, 4, 5];
+const mystery = [1, 2, 3, 4, 5];
+
+log(nums === mystery); // output false;
+
+const moreNums = nums;
+log(moreNums === nums); // output true ... because it refers to the same address in memory.
+moreNums.push(6, 7, 8);
+log(nums); // output of nums is the same as moreNums because they both refers to the same address in memory
