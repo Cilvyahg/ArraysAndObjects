@@ -266,3 +266,7 @@ const moreNums = nums;
 log(moreNums === nums); // output true ... because it refers to the same address in memory.
 moreNums.push(6, 7, 8);
 log(nums); // output of nums is the same as moreNums because they both refers to the same address in memory
+
+
+// equality operators will check the equality of reference and not the equality of reference
+

@@ -204,3 +204,14 @@ with classes instead of manually creating these.
 Objects are reference types just like arrays. so that is why we use const. you can change them by adding properties .. that will also change the reference. 
 
 
+## LOOPS
+
+while loop 
+
+syntax
+
+```
+while(some condition is true) {
+
+}
+```
