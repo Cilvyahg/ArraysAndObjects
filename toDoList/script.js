@@ -2,6 +2,8 @@
 
 const log = console.log;
 
+/*
+
 let j = 0;
 
 while (j <= 5) {
@@ -68,7 +70,7 @@ person.nickName = 'CHERRRRR'; // CHANGING THE NICKNAME VALUE
 log(person.fullName()); // the object on the left
 log(person.printBio());
 
-/* ========================== DOM ========================= */
+// ========================== DOM ========================= 
 
 const allLis = document.querySelectorAll('li');
 
@@ -77,4 +79,28 @@ for (let li of allLis) {
   // li.style.color = 'blue' <--- inline styling
 }
 
+*/
 
+const addToDoBtn = document.querySelector('#addToDo');
+const toDoContainer = document.querySelector('#toDoContainer');
+const input = document.querySelector('#inputfield');
+
+addToDoBtn.addEventListener('click', function () {
+  const paragraph = document.createElement('p');
+  paragraph.classList.add('paragraph-styling');
+  paragraph.innerText = input.value;
+  toDoContainer.appendChild(paragraph);
+  input.value = '';
+
+  paragraph.addEventListener('click', linethrough);
+
+  paragraph.addEventListener('dblclick', removeParagraph);
+});
+
+const linethrough = function () {
+  this.style.textDecoration = 'line-through';
+};
+
+const removeParagraph = function () {
+  toDoContainer.removeChild(this);
+};

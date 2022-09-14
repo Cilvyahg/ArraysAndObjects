@@ -1,7 +1,40 @@
-.color-li { 
-  color: rgb(223, 45, 208);
-  font-size:1rem;
-  text-decoration: line-through;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  list-style-type: none;
+html,
+body {
+  box-sizing: border-box;
+  width: 50%;
+  /* want dan heb je aan beide kanten nog 25% over anders 0 omdat het 100% inneemt */
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  width: 360px;
+}
+
+#inputfield {
+  width: 300px;
+  height: 40px;
+  border: 1px rgb(40, 13, 13) solid;
+  outline: none;
+  font-size: 1.6rem;
+  vertical-align: middle;
+}
+
+#addToDo {
+  width: 40px;
+  aspect-ratio: 1/1;
+  border: 1px solid black;
+  vertical-align: middle;
+  font-size: 30px;
+}
+
+.to-dos {
+  margin-top: 25px;
+  background-color: rgb(255, 255, 255);
+}
+
+.paragraph-styling {
+  margin: 0; 
+  cursor: pointer;
+  font-size: 16px;
 }
