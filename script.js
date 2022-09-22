@@ -120,7 +120,7 @@ log(randomPersonData);
 // capribtn.addEventListener('click', callbackCapricon);
 
 // const showCapriCornList = function () {
-//   //debugger;
+//
 //   const capriCornWomenList = document.querySelector('#capricorn-women'); // HOOFDFUNCTIONALITEIT JE WILT DE CAPRICORN LIJST SHOWEN
 //   capriCornWomenList.style.display = 'block';
 //   const countriesList = document.querySelector('#countries-list');
@@ -147,15 +147,15 @@ log(randomPersonData);
 
 // log(isCapricorn(mybday2));
 
-// // ===== OLD CREDITCARDS =====
+/*   ===== OLD CREDITCARDS ===== */
 
+const checkIfPersonIs18 = function (peopleArray) {
+  return peopleArray.filter(function (person) {
+    return person.age >= 18;
+  });
+};
 
-const personsAbove18 = randomPersonData.filter(function (person) {
-  return person.age >= 18;
-});
-
-log(personsAbove18);
-
+const is18YearsOrAbove = checkIfPersonIs18(randomPersonData);
 
 const currentYear = new Date().getFullYear(); //2022 current
 const currentYearShort = currentYear % 2000; // want 2000 past 1x in 2022 en dan blijft er 22 over
@@ -164,17 +164,23 @@ log(currentYearShort);
 
 const month = new Date().getMonth() + 1; // maand
 
-const isNotExpired = function (person) {
+const splitAndInteger = function (person) {
   const expirationDate = person.credit_card.expiration;
   const splitExpirationDate = expirationDate.split('/');
 
   const listOfExpiredDates = [];
+  
 
   for (let date of splitExpirationDate) {
     const numberedDate = parseInt(date);
     listOfExpiredDates.push(numberedDate);
   }
-  log(listOfExpiredDates);
+
+  return listOfExpiredDates;
+};
+
+const isNotExpired = function (person) {
+  const listOfExpiredDates = splitAndInteger(person);
 
   if (listOfExpiredDates[1] === currentYearShort) {
     if (listOfExpiredDates[0] >= month) {
@@ -187,19 +193,49 @@ const isNotExpired = function (person) {
       return true;
     }
   }
-
   return false;
 };
 
-
-
 const creditCardExpirationCheck = function (personAbove18List) {
-  return personAbove18List.filter(isNotExpired);
+  const filtered = personAbove18List.filter(isNotExpired);
+  log(filtered)
+  return filtered.sort(sortedCreditCardsAscending);
 };
 
-log(creditCardExpirationCheck(personsAbove18));
+const sortedCreditCardsAscending = function (person1, person2) {
+  // // van alle creditcardlist een numerieke data typen maken, zodat je kunt vergelijken
+  const listOfCreditcardDatePerson1 = splitAndInteger(person1);
+  const listOfCreditcardDatePerson2 = splitAndInteger(person2);
+  log(listOfCreditcardDatePerson1);
+  log(listOfCreditcardDatePerson2)
 
-// === SORT Live Les ====
+  if (listOfCreditcardDatePerson1[1] > listOfCreditcardDatePerson2[1]) {
+    return 1;
+  }
+
+  if (listOfCreditcardDatePerson1[1] < listOfCreditcardDatePerson2[1]) {
+    return -1;
+  }
+
+  if (listOfCreditcardDatePerson1[0] > listOfCreditcardDatePerson2[0]) {
+    return 1;
+  }
+
+  if (listOfCreditcardDatePerson1[0] < listOfCreditcardDatePerson2[0]) {
+    return -1;
+  }
+
+  return 0;
+};
+
+const hasValidCreditCard = creditCardExpirationCheck(is18YearsOrAbove);
+log(hasValidCreditCard);
+
+// sortedCreditCardsAscending(hasValidCreditCard);
+
+// SORT THE LIST!!!!
+
+/* // === SORT Live Les ====
 //  - het wordt op de plaatst gesorteerd, dus het originele array wordt ook aangepast, maar GEEFT ook een nieuwe array terug. Dit is bij andere array Methods niet het geval.
 
 const numbers = [5, 4, 3, 2, 1];
@@ -218,16 +254,16 @@ log(sortedComplex); // output: ['B', 'C', 'a', 'b', 'c', 'd', 'e', 'Ë', 'ø'];
 
 // === NESTED LOOPS ===
 
-/* for (let i = 0; i <= 10; i++) {
+ for (let i = 0; i <= 10; i++) {
   log('outer loop', i);
   for (let j = 10; j >= 0; j -= 2) {
     log('      innerloop', j);
   }
-} */
+} 
 
 // the innerloop completes it full cycle. the outer loop just iterates one.
 
-/*
+
 const gameBoard = [
   [4, 32, 8, 4],
   [64, 8, 32, 2],
@@ -246,11 +282,9 @@ for (let numbers of gameBoard) {
     totalScore += number;
     log('totalscore', totalScore);
   }
-} */
-
+} 
 // Object: adding and updating properties
 
-/*
 
 const userReviews = {}; // empty object
 
@@ -345,5 +379,4 @@ if (birthday.getTime() === birthdaySecond.getTime()) {
   log('birthdays are equal');
 } else {
   log('birthdays are not equal');
-}
- */
+} */
