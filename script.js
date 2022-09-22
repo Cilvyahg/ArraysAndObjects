@@ -6,225 +6,198 @@ log(randomPersonData);
 
 //==== 1 COUNTRY LIST ====
 
-const ULcontent = function (ul) {
-  if (ul.style.display === 'block') {
-    ul.classList.add('hide-content');
-  }
-  if (ul.style.display === 'none') {
-    ul.classList.remove('hide-content');
-    ul.classList.add('show-content');
-  }
-};
-
-//   let hasClass = ul.classList.contains('block');
-//   if (hasClass) {
-//     ul.classList.remove('show-content');
+// const ULcontent = function (ul) {
+//   if (ul.style.display === 'block') {
+//     ul.classList.add('hide-content');
 //   }
-//   if (!hasClass) {
+//   if (ul.style.display === 'none') {
+//     ul.classList.remove('hide-content');
 //     ul.classList.add('show-content');
 //   }
 // };
 
-const countryListBtn = document.querySelector('.countryList');
+// //   let hasClass = ul.classList.contains('block');
+// //   if (hasClass) {
+// //     ul.classList.remove('show-content');
+// //   }
+// //   if (!hasClass) {
+// //     ul.classList.add('show-content');
+// //   }
+// // };
 
-const renderCountries = (listOfPeople) => {
-  const countryMap = listOfPeople
-    .map((person) => {
-      return person.region;
-    })
-    .sort();
+// const countryListBtn = document.querySelector('.countryList');
 
-  const UL = document.createElement('ul');
-  countryListBtn.insertAdjacentElement('afterend', UL);
-  UL.id = 'countries-list';
+// const renderCountries = (listOfPeople) => {
+//   const countryMap = listOfPeople
+//     .map((person) => {
+//       return person.region;
+//     })
+//     .sort();
 
-  for (let country of countryMap) {
-    const LI = document.createElement('li');
-    LI.innerText = `${country}`;
-    UL.appendChild(LI);
+//   const UL = document.createElement('ul');
+//   countryListBtn.insertAdjacentElement('afterend', UL);
+//   UL.id = 'countries-list';
+
+//   for (let country of countryMap) {
+//     const LI = document.createElement('li');
+//     LI.innerText = `${country}`;
+//     UL.appendChild(LI);
+//   }
+// };
+
+// const cb = (e) => {
+//   renderCountries(randomPersonData);
+//   countryListBtn.removeEventListener('click', cb); // wordt hier al op de eerste klik weggehaald en er zit geen eventlistener meer hierop
+//   log(e);
+// };
+
+// countryListBtn.addEventListener('click', cb);
+
+// const showCountryList = () => {
+//   const countryList = document.querySelector('#countries-list');
+//   countryList.style.display = 'block';
+//   const capriCornWomenList = document.querySelector('#capricorn-women');
+
+//   if (capriCornWomenList !== null) {
+//     // als capricornwomenlist een UL is dan wil je het verbergen
+//     capriCornWomenList.style.display = 'none';
+//   }
+// };
+
+// countryListBtn.addEventListener('click', showCountryList);
+
+// // ==== Capricorn women ====
+
+// const capribtn = document.querySelector('.capricorn');
+
+// const capriLoop = function (array) {
+//   const UL = document.createElement('ul');
+//   UL.classList.add('non-bullet');
+//   UL.id = 'capricorn-women';
+
+//   for (let element of array) {
+//     const LI = document.createElement('LI');
+//     const LiSecond = document.createElement('LI');
+//     const img = document.createElement('IMG');
+//     img.src = `${element.photo}`;
+//     LI.innerText = `First name: ${element.name}`;
+//     LiSecond.innerText = `Last name: ${element.surname}`;
+//     UL.appendChild(img);
+//     UL.append(LI, LiSecond);
+//     capribtn.insertAdjacentElement('afterend', UL);
+//   }
+// };
+
+// const capricorn = function (listOfPeople) {
+//   const capricornWomenOlderThan30 = listOfPeople
+//     .filter(function (person) {
+//       return (
+//         person.gender.includes('female') && // ipv ===
+//         person.age > 30 &&
+//         isCapricorn(person.birthday.dmy)
+//       ); // want filter wilt een boolean true or false
+//     })
+//     .sort(compareByName); // callback function bij sort() dus je hoeft deze functie niet te invoken, want de sort invoked hem.
+
+//   capriLoop(capricornWomenOlderThan30);
+// };
+
+// const compareByName = (person1, person2) => {
+//   if (person1['name'] < person2['name']) {
+//     return -1;
+//   }
+//   if (person1['name'] > person2['name']) {
+//     return 1;
+//   }
+//   return 0;
+// };
+
+// const callbackCapricon = function () {
+//   capricorn(randomPersonData);
+//   capribtn.removeEventListener('click', callbackCapricon); // de click type is verwijderd van de button
+// };
+
+// capribtn.addEventListener('click', callbackCapricon);
+
+// const showCapriCornList = function () {
+//   //debugger;
+//   const capriCornWomenList = document.querySelector('#capricorn-women'); // HOOFDFUNCTIONALITEIT JE WILT DE CAPRICORN LIJST SHOWEN
+//   capriCornWomenList.style.display = 'block';
+//   const countriesList = document.querySelector('#countries-list');
+//   if (countriesList !== null) {
+//     countriesList.style.display = 'none'; // je kan style property niet op null object toepassen
+//   }
+// };
+
+// capribtn.addEventListener('click', showCapriCornList);
+
+// let mybday1 = '12/5/1989';
+// let mybday2 = '21/12/1990';
+
+// const isCapricorn = function (birthday) {
+//   const splitDate = birthday.split('/', 2);
+
+//   if (splitDate[1] === '12' || splitDate[1] === '01') {
+//     if (splitDate[0] >= 22 || splitDate[0] <= 19) {
+//       return true;
+//     }
+//   }
+//   return false; // buiten de if statement (dus niet een else {}) op deze manier return je altijd iets // by default
+// };
+
+// log(isCapricorn(mybday2));
+
+// // ===== OLD CREDITCARDS =====
+
+
+const personsAbove18 = randomPersonData.filter(function (person) {
+  return person.age >= 18;
+});
+
+log(personsAbove18);
+
+
+const currentYear = new Date().getFullYear(); //2022 current
+const currentYearShort = currentYear % 2000; // want 2000 past 1x in 2022 en dan blijft er 22 over
+const nextYear = currentYearShort + 1;
+log(currentYearShort);
+
+const month = new Date().getMonth() + 1; // maand
+
+const isNotExpired = function (person) {
+  const expirationDate = person.credit_card.expiration;
+  const splitExpirationDate = expirationDate.split('/');
+
+  const listOfExpiredDates = [];
+
+  for (let date of splitExpirationDate) {
+    const numberedDate = parseInt(date);
+    listOfExpiredDates.push(numberedDate);
   }
-};
+  log(listOfExpiredDates);
 
-const cb = (e) => {
-  renderCountries(randomPersonData);
-  countryListBtn.removeEventListener('click', cb); // wordt hier al op de eerste klik weggehaald en er zit geen eventlistener meer hierop
-  log(e);
-};
-
-countryListBtn.addEventListener('click', cb);
-
-const showCountryList = () => {
-  const countryList = document.querySelector('#countries-list');
-  countryList.style.display = 'block';
-  const capriCornWomenList = document.querySelector('#capricorn-women');
-
-  if (capriCornWomenList !== null) {
-    // als capricornwomenlist een UL is dan wil je het verbergen
-    capriCornWomenList.style.display = 'none';
-  }
-};
-
-countryListBtn.addEventListener('click', showCountryList);
-
-// ==== Capricorn women ====
-
-const capribtn = document.querySelector('.capricorn');
-
-const capriLoop = function (array) {
-  const UL = document.createElement('ul');
-  UL.classList.add('non-bullet');
-  UL.id = 'capricorn-women';
-
-  for (let element of array) {
-    const LI = document.createElement('LI');
-    const LiSecond = document.createElement('LI');
-    const img = document.createElement('IMG');
-    img.src = `${element.photo}`;
-    LI.innerText = `First name: ${element.name}`;
-    LiSecond.innerText = `Last name: ${element.surname}`;
-    UL.appendChild(img);
-    UL.append(LI, LiSecond);
-    capribtn.insertAdjacentElement('afterend', UL);
-  }
-};
-
-const capricorn = function (listOfPeople) {
-  const capricornWomenOlderThan30 = listOfPeople
-    .filter(function (person) {
-      return (
-        person.gender.includes('female') && // ipv ===
-        person.age > 30 &&
-        isCapricorn(person.birthday.dmy)
-      ); // want filter wilt een boolean true or false
-    })
-    .sort(compareByName); // callback function bij sort() dus je hoeft deze functie niet te invoken, want de sort invoked hem.
-
-  capriLoop(capricornWomenOlderThan30);
-};
-
-const compareByName = (person1, person2) => {
-  if (person1['name'] < person2['name']) {
-    return -1;
-  }
-  if (person1['name'] > person2['name']) {
-    return 1;
-  }
-  return 0;
-};
-
-const callbackCapricon = function () {
-  capricorn(randomPersonData);
-  capribtn.removeEventListener('click', callbackCapricon); // de click type is verwijderd van de button
-};
-
-capribtn.addEventListener('click', callbackCapricon);
-
-const showCapriCornList = function () {
-  //debugger;
-  const capriCornWomenList = document.querySelector('#capricorn-women'); // HOOFDFUNCTIONALITEIT JE WILT DE CAPRICORN LIJST SHOWEN
-  capriCornWomenList.style.display = 'block';
-  const countriesList = document.querySelector('#countries-list');
-  if (countriesList !== null) {
-    countriesList.style.display = 'none'; // je kan style property niet op null object toepassen
-  }
-};
-
-capribtn.addEventListener('click', showCapriCornList);
-
-let mybday1 = '12/5/1989';
-let mybday2 = '21/12/1990';
-
-const isCapricorn = function (birthday) {
-  const splitDate = birthday.split('/', 2);
-
-  if (splitDate[1] === '12' || splitDate[1] === '01') {
-    if (splitDate[0] >= 22 || splitDate[0] <= 19) {
+  if (listOfExpiredDates[1] === currentYearShort) {
+    if (listOfExpiredDates[0] >= month) {
       return true;
     }
   }
-  return false; // buiten de if statement (dus niet een else {}) op deze manier return je altijd iets // by default
-};
 
-log(isCapricorn(mybday2));
-
-// ===== OLD CREDITCARDS =====
-
-const date1 = new Date('15 Mar 2022'); // new Date() is a constructor and if you keep it empty it's the current date. the new date constructor will make the date automatically in a string
-log(date1);
-const p = (document.getElementById(
-  'testing'
-).innerHTML = `<strong>${date1.toDateString()}</strong>`);
-
-// let todayDayMonth = today.split(" ").slice(1, 3);
-// todayDayMonth[0] = getMonth();
-// log(todayDayMonth) // output is 09/14
-
-// elke datum binnen de data splitten met / weg. dan kan je vergelijken.
-
-const today = new Date();
-const month = (today.getMonth() + 1).toString();
-const date = today.getDay().toString();
-
-const arrayOfToday = Array.of(month, date);
-log(arrayOfToday);
-
-const dateAYearFromToday = new Date('2023-09-22');
-const monthSeptIn2023 = (dateAYearFromToday.getMonth() + 1).toString(); // 9
-const yearSeptin2023 = dateAYearFromToday.getFullYear().toString().slice(2); // 23
-
-log(monthSeptIn2023, yearSeptin2023);
-
-// check if everyone is above 18;
-const Adultsonly = randomPersonData.filter(function (person) {
-  return person.age > 18;
-});
-
-log(Adultsonly);
-
-
-
-const checkCreditCardExpiration = (expirationdate) => {
-
-  for (let date of expirationdate) {
-    if (parseInt(date[0]) >= parseInt(monthSeptIn2023)) {
-      if (parseInt(date[1]) >= parseInt(yearSeptin2023)) {
-       
-      }
+  if (listOfExpiredDates[1] === nextYear) {
+    if (listOfExpiredDates[0] <= month) {
+      return true;
     }
   }
 
- };
-
-
-
-const creditCardExpiration = (personsAbove18) => {
-  const splitdate = personsAbove18.map(function (person) {
-    let splitCreditcardDate = person.credit_card.expiration.split('/');
-
-    return splitCreditcardDate
-   
-  });
-
-  splitdate.forEach(function (date) {
-    date.forEach((person) => {
-      parseInt(person)
-    });
-  })
-
-  log(splitdate)
-
-  checkCreditCardExpiration(splitdate);
+  return false;
 };
 
-log(creditCardExpiration(Adultsonly));
 
 
+const creditCardExpirationCheck = function (personAbove18List) {
+  return personAbove18List.filter(isNotExpired);
+};
 
-
-
-
-
-
+log(creditCardExpirationCheck(personsAbove18));
 
 // === SORT Live Les ====
 //  - het wordt op de plaatst gesorteerd, dus het originele array wordt ook aangepast, maar GEEFT ook een nieuwe array terug. Dit is bij andere array Methods niet het geval.
@@ -276,6 +249,8 @@ for (let numbers of gameBoard) {
 } */
 
 // Object: adding and updating properties
+
+/*
 
 const userReviews = {}; // empty object
 
@@ -371,3 +346,4 @@ if (birthday.getTime() === birthdaySecond.getTime()) {
 } else {
   log('birthdays are not equal');
 }
+ */
