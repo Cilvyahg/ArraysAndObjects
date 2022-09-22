@@ -99,8 +99,6 @@ const capricorn = function (listOfPeople) {
     })
     .sort(compareByName); // callback function bij sort() dus je hoeft deze functie niet te invoken, want de sort invoked hem.
 
-  log(capricornWomenOlderThan30);
-
   capriLoop(capricornWomenOlderThan30);
 };
 
@@ -135,7 +133,6 @@ capribtn.addEventListener('click', showCapriCornList);
 
 let mybday1 = '12/5/1989';
 let mybday2 = '21/12/1990';
-let mybday5 = '21/10/1995';
 
 const isCapricorn = function (birthday) {
   const splitDate = birthday.split('/', 2);
@@ -149,7 +146,85 @@ const isCapricorn = function (birthday) {
 };
 
 log(isCapricorn(mybday2));
-log(isCapricorn(mybday5));
+
+// ===== OLD CREDITCARDS =====
+
+const date1 = new Date('15 Mar 2022'); // new Date() is a constructor and if you keep it empty it's the current date. the new date constructor will make the date automatically in a string
+log(date1);
+const p = (document.getElementById(
+  'testing'
+).innerHTML = `<strong>${date1.toDateString()}</strong>`);
+
+// let todayDayMonth = today.split(" ").slice(1, 3);
+// todayDayMonth[0] = getMonth();
+// log(todayDayMonth) // output is 09/14
+
+// elke datum binnen de data splitten met / weg. dan kan je vergelijken.
+
+const today = new Date();
+const month = (today.getMonth() + 1).toString();
+const date = today.getDay().toString();
+
+const arrayOfToday = Array.of(month, date);
+log(arrayOfToday);
+
+const dateAYearFromToday = new Date('2023-09-22');
+const monthSeptIn2023 = (dateAYearFromToday.getMonth() + 1).toString(); // 9
+const yearSeptin2023 = dateAYearFromToday.getFullYear().toString().slice(2); // 23
+
+log(monthSeptIn2023, yearSeptin2023);
+
+// check if everyone is above 18;
+const Adultsonly = randomPersonData.filter(function (person) {
+  return person.age > 18;
+});
+
+log(Adultsonly);
+
+
+
+const checkCreditCardExpiration = (expirationdate) => {
+
+  for (let date of expirationdate) {
+    if (parseInt(date[0]) >= parseInt(monthSeptIn2023)) {
+      if (parseInt(date[1]) >= parseInt(yearSeptin2023)) {
+       
+      }
+    }
+  }
+
+ };
+
+
+
+const creditCardExpiration = (personsAbove18) => {
+  const splitdate = personsAbove18.map(function (person) {
+    let splitCreditcardDate = person.credit_card.expiration.split('/');
+
+    return splitCreditcardDate
+   
+  });
+
+  splitdate.forEach(function (date) {
+    date.forEach((person) => {
+      parseInt(person)
+    });
+  })
+
+  log(splitdate)
+
+  checkCreditCardExpiration(splitdate);
+};
+
+log(creditCardExpiration(Adultsonly));
+
+
+
+
+
+
+
+
 
 // === SORT Live Les ====
 //  - het wordt op de plaatst gesorteerd, dus het originele array wordt ook aangepast, maar GEEFT ook een nieuwe array terug. Dit is bij andere array Methods niet het geval.
@@ -170,15 +245,16 @@ log(sortedComplex); // output: ['B', 'C', 'a', 'b', 'c', 'd', 'e', 'Ë', 'ø'];
 
 // === NESTED LOOPS ===
 
-for (let i = 0; i <= 10; i++) {
+/* for (let i = 0; i <= 10; i++) {
   log('outer loop', i);
   for (let j = 10; j >= 0; j -= 2) {
     log('      innerloop', j);
   }
-}
+} */
 
 // the innerloop completes it full cycle. the outer loop just iterates one.
 
+/*
 const gameBoard = [
   [4, 32, 8, 4],
   [64, 8, 32, 2],
@@ -197,7 +273,7 @@ for (let numbers of gameBoard) {
     totalScore += number;
     log('totalscore', totalScore);
   }
-}
+} */
 
 // Object: adding and updating properties
 
@@ -267,6 +343,31 @@ log(moreNums === nums); // output true ... because it refers to the same address
 moreNums.push(6, 7, 8);
 log(nums); // output of nums is the same as moreNums because they both refers to the same address in memory
 
+// equality operators will check the equality of reference and not the equality of the content
 
-// equality operators will check the equality of reference and not the equality of reference
+// ==== date object ====
 
+const myDate = new Date(); // current date
+log(myDate);
+
+const myPastDate = new Date('1545-09-14T10:30:15');
+log(myPastDate);
+
+const myFutureDate = new Date('2023-09-14T10:30:15');
+log(myFutureDate);
+
+const birthday = new Date('1985-01-15T11:15:25');
+const birthdaySecond = new Date('1985-01-15T11:15:25');
+log(birthday.getFullYear()); // output 1985
+log(birthday.getDate()); // the date 15
+log(birthday.getMonth()); // 0 is january
+log(birthday.getDay()); // 0 = monday 6 = saturday
+
+//get the number of ms since 1 january 1970
+log(birthday.getTime());
+
+if (birthday.getTime() === birthdaySecond.getTime()) {
+  log('birthdays are equal');
+} else {
+  log('birthdays are not equal');
+}

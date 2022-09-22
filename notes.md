@@ -240,3 +240,31 @@ it depends on how you call it.
 ### .style property in the display
 
 if you do this is will be styled inline, it's better to do it with adding class. 
+
+### Date Objects
+let's you do basic operation with data and time
+represents a point in time
+
+
+## splice and slice
+
+**slice()**
+
+Copies elements from an array and returns them as a new array
+Does not change the original array
+Slice doesn’t include the 2nd index parameter
+Can be used on both strings and arrays
+
+**.splice()**
+
+Mutates/Changes the original array
+Returns an array of removed elements
+Used for adding/removing elements from the original array
+Can only be used on arrays
+
+## Array.of 
+The difference between Array.of() and the Array constructor is in the handling of integer arguments: Array.of(7) creates an array with a single element, 7, whereas Array(7) creates an empty array with a length property of 7. (That implies an array of 7 empty slots, not slots with actual undefined values.) 
+
+## Array.from
+with array from you can use array methods on it .. a second method like map.\
+array.from(dcoument.queryselect('p).map((itrem) => item.innertext = 'hello))

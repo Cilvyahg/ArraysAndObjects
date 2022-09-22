@@ -2,7 +2,7 @@
 
 const log = console.log;
 
-/*
+
 
 let j = 0;
 
@@ -79,7 +79,7 @@ for (let li of allLis) {
   // li.style.color = 'blue' <--- inline styling
 }
 
-*/
+
 
 const addToDoBtn = document.querySelector('#addToDo');
 const toDoContainer = document.querySelector('#toDoContainer');
@@ -104,4 +104,6 @@ const linethrough = function () {
 const removeParagraph = function () {
   toDoContainer.removeChild(this);
 };
+
+
 
