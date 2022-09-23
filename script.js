@@ -1,10 +1,8 @@
 'use strict';
 const log = console.log;
-
 import { randomPersonData } from './randomPersonData.js';
 
-
-//==== 1 COUNTRY LIST ====
+// ***** COUNTRY LIST ********
 
 // const ULcontent = function (ul) {
 //   if (ul.style.display === 'block') {
@@ -16,138 +14,127 @@ import { randomPersonData } from './randomPersonData.js';
 //   }
 // };
 
-// //   let hasClass = ul.classList.contains('block');
-// //   if (hasClass) {
-// //     ul.classList.remove('show-content');
-// //   }
-// //   if (!hasClass) {
-// //     ul.classList.add('show-content');
-// //   }
-// // };
+const countryListBtn = document.querySelector('.countryList');
 
-// const countryListBtn = document.querySelector('.countryList');
+const renderCountries = (listOfPeople) => {
+  const countryMap = listOfPeople
+    .map((person) => {
+      return person.region;
+    })
+    .sort();
 
-// const renderCountries = (listOfPeople) => {
-//   const countryMap = listOfPeople
-//     .map((person) => {
-//       return person.region;
-//     })
-//     .sort();
+  const UL = document.createElement('ul');
+  countryListBtn.insertAdjacentElement('afterend', UL);
+  UL.id = 'countries-list';
 
-//   const UL = document.createElement('ul');
-//   countryListBtn.insertAdjacentElement('afterend', UL);
-//   UL.id = 'countries-list';
+  for (let country of countryMap) {
+    const LI = document.createElement('li');
+    LI.innerText = `${country}`;
+    UL.appendChild(LI);
+  }
+};
 
-//   for (let country of countryMap) {
-//     const LI = document.createElement('li');
-//     LI.innerText = `${country}`;
-//     UL.appendChild(LI);
-//   }
-// };
+const cb = (e) => {
+  renderCountries(randomPersonData);
+  countryListBtn.removeEventListener('click', cb); // wordt hier al op de eerste klik weggehaald en er zit geen eventlistener meer hierop
+  log(e);
+};
 
-// const cb = (e) => {
-//   renderCountries(randomPersonData);
-//   countryListBtn.removeEventListener('click', cb); // wordt hier al op de eerste klik weggehaald en er zit geen eventlistener meer hierop
-//   log(e);
-// };
+const showCountryList = () => {
+  const countryList = document.querySelector('#countries-list');
+  countryList.style.display = 'block';
+  const capriCornWomenList = document.querySelector('#capricorn-women');
 
-// countryListBtn.addEventListener('click', cb);
+  if (capriCornWomenList !== null) {
+    // als capricornwomenlist een UL is dan wil je het verbergen
+    capriCornWomenList.style.display = 'none';
+  }
+};
 
-// const showCountryList = () => {
-//   const countryList = document.querySelector('#countries-list');
-//   countryList.style.display = 'block';
-//   const capriCornWomenList = document.querySelector('#capricorn-women');
+countryListBtn.addEventListener('click', cb);
+countryListBtn.addEventListener('click', showCountryList);
 
-//   if (capriCornWomenList !== null) {
-//     // als capricornwomenlist een UL is dan wil je het verbergen
-//     capriCornWomenList.style.display = 'none';
-//   }
-// };
+//  ******* CAPRICON WOMEN ********
 
-// countryListBtn.addEventListener('click', showCountryList);
+const capribtn = document.querySelector('.capricorn');
 
-// // ==== Capricorn women ====
+const capriLoop = function (array) {
+  const UL = document.createElement('ul');
+  UL.classList.add('non-bullet');
+  UL.id = 'capricorn-women';
 
-// const capribtn = document.querySelector('.capricorn');
+  for (let element of array) {
+    const LI = document.createElement('LI');
+    const LiSecond = document.createElement('LI');
+    const img = document.createElement('IMG');
+    img.src = `${element.photo}`;
+    LI.innerText = `First name: ${element.name}`;
+    LiSecond.innerText = `Last name: ${element.surname}`;
+    UL.appendChild(img);
+    UL.append(LI, LiSecond);
+    capribtn.insertAdjacentElement('afterend', UL);
+  }
+};
 
-// const capriLoop = function (array) {
-//   const UL = document.createElement('ul');
-//   UL.classList.add('non-bullet');
-//   UL.id = 'capricorn-women';
+const capricorn = function (listOfPeople) {
+  const capricornWomenOlderThan30 = listOfPeople
+    .filter(function (person) {
+      return (
+        person.gender.includes('female') && // ipv ===
+        person.age > 30 &&
+        isCapricorn(person.birthday.dmy)
+      ); // want filter wilt een boolean true or false
+    })
+    .sort(compareByName); // callback function bij sort() dus je hoeft deze functie niet te invoken, want de sort invoked hem.
 
-//   for (let element of array) {
-//     const LI = document.createElement('LI');
-//     const LiSecond = document.createElement('LI');
-//     const img = document.createElement('IMG');
-//     img.src = `${element.photo}`;
-//     LI.innerText = `First name: ${element.name}`;
-//     LiSecond.innerText = `Last name: ${element.surname}`;
-//     UL.appendChild(img);
-//     UL.append(LI, LiSecond);
-//     capribtn.insertAdjacentElement('afterend', UL);
-//   }
-// };
+  capriLoop(capricornWomenOlderThan30);
+};
 
-// const capricorn = function (listOfPeople) {
-//   const capricornWomenOlderThan30 = listOfPeople
-//     .filter(function (person) {
-//       return (
-//         person.gender.includes('female') && // ipv ===
-//         person.age > 30 &&
-//         isCapricorn(person.birthday.dmy)
-//       ); // want filter wilt een boolean true or false
-//     })
-//     .sort(compareByName); // callback function bij sort() dus je hoeft deze functie niet te invoken, want de sort invoked hem.
+const compareByName = (person1, person2) => {
+  if (person1['name'] < person2['name']) {
+    return -1;
+  }
+  if (person1['name'] > person2['name']) {
+    return 1;
+  }
+  return 0;
+};
 
-//   capriLoop(capricornWomenOlderThan30);
-// };
+const callbackCapricon = function () {
+  capricorn(randomPersonData);
+  capribtn.removeEventListener('click', callbackCapricon); // de click type is verwijderd van de button
+};
 
-// const compareByName = (person1, person2) => {
-//   if (person1['name'] < person2['name']) {
-//     return -1;
-//   }
-//   if (person1['name'] > person2['name']) {
-//     return 1;
-//   }
-//   return 0;
-// };
+capribtn.addEventListener('click', callbackCapricon);
 
-// const callbackCapricon = function () {
-//   capricorn(randomPersonData);
-//   capribtn.removeEventListener('click', callbackCapricon); // de click type is verwijderd van de button
-// };
+const showCapriCornList = function () {
+  const capriCornWomenList = document.querySelector('#capricorn-women'); // HOOFDFUNCTIONALITEIT JE WILT DE CAPRICORN LIJST SHOWEN
+  capriCornWomenList.style.display = 'block';
+  const countriesList = document.querySelector('#countries-list');
+  if (countriesList !== null) {
+    countriesList.style.display = 'none'; // je kan style property niet op null object toepassen
+  }
+};
 
-// capribtn.addEventListener('click', callbackCapricon);
+capribtn.addEventListener('click', showCapriCornList);
 
-// const showCapriCornList = function () {
-//
-//   const capriCornWomenList = document.querySelector('#capricorn-women'); // HOOFDFUNCTIONALITEIT JE WILT DE CAPRICORN LIJST SHOWEN
-//   capriCornWomenList.style.display = 'block';
-//   const countriesList = document.querySelector('#countries-list');
-//   if (countriesList !== null) {
-//     countriesList.style.display = 'none'; // je kan style property niet op null object toepassen
-//   }
-// };
+let mybday1 = '12/5/1989';
+let mybday2 = '21/12/1990';
 
-// capribtn.addEventListener('click', showCapriCornList);
+const isCapricorn = function (birthday) {
+  const splitDate = birthday.split('/', 2);
 
-// let mybday1 = '12/5/1989';
-// let mybday2 = '21/12/1990';
+  if (splitDate[1] === '12' || splitDate[1] === '01') {
+    if (splitDate[0] >= 22 || splitDate[0] <= 19) {
+      return true;
+    }
+  }
+  return false; // buiten de if statement (dus niet een else {}) op deze manier return je altijd iets // by default
+};
 
-// const isCapricorn = function (birthday) {
-//   const splitDate = birthday.split('/', 2);
+log(isCapricorn(mybday2));
 
-//   if (splitDate[1] === '12' || splitDate[1] === '01') {
-//     if (splitDate[0] >= 22 || splitDate[0] <= 19) {
-//       return true;
-//     }
-//   }
-//   return false; // buiten de if statement (dus niet een else {}) op deze manier return je altijd iets // by default
-// };
-
-// log(isCapricorn(mybday2));
-
-/*   ===== OLD CREDITCARDS ===== */
+/* ******* CREDITCARDEXPIRED */
 
 const today = new Date(); //huidige datum.
 const currentYear = today.getFullYear(); //current year : 2022
@@ -215,4 +202,40 @@ const sortCreditCardsAscending = function (person1, person2) {
 const hasValidCreditCard = creditCardExpirationCheck(is18YearsOrAbove);
 log(hasValidCreditCard);
 
+const btnCreditCard = document.getElementById('credit-card');
 
+btnCreditCard.addEventListener('click', function (e) {
+  log(e);
+  createCreditCardList(hasValidCreditCard);
+});
+
+const createCreditCardList = function (listOfPeople) {
+  listOfPeople.forEach(function (person) {
+    const UL = document.createElement('ul');
+
+    const createArray = Array.of(
+      `First Name: ${person.name}`,
+      `Last Name: ${person.surname}`,
+      `Phone: ${person.phone}`,
+      `Creditcard no: ${person.credit_card['number']}`,
+      `Expiration date: ${person.credit_card['expiration']}`
+    );
+
+    log(createArray.at(0));
+    for (let i = 0; i < createArray.length; i++) {
+      const li = document.createElement('li');
+      log((li.innerText = createArray[i]));
+      UL.append(li);
+    }
+
+
+    //classlist toevoegen aan elke UL. 
+    document.body.appendChild(UL);
+
+    log(createArray);
+
+    // UL.append(balabalabal, balaalaka)
+  });
+
+  log(listOfPeople);
+};
