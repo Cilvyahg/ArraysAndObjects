@@ -268,3 +268,37 @@ The difference between Array.of() and the Array constructor is in the handling o
 ## Array.from
 with array from you can use array methods on it .. a second method like map.\
 array.from(dcoument.queryselect('p).map((itrem) => item.innertext = 'hello))
+
+## Event Bubbling 
+
+when an event happens on an element, it first runs the handlers on it, then on its parents, then all the way up on other ancestors
+
+The process is called “bubbling”, because events “bubbles UP"  from the inner element up through parents like a bubble in the water. 
+
+![image](./Screenshot%202022-09-23%20at%2011.43.26.png)
+
+Almost all events bubble, but a focus events does not bubble.
+
+### event.target 
+the most deepley nested element that caused the event is called the target element, accessible as ```event.target```. this is the target that initiated the event, it doesn't change though the bubbling process.
+
+this is different from ```event.currentTarget```, which does change through the bubbling process
+
+
+## STOPPING BUBBLING
+
+A bubbling event goes from the target element straight up. Normally it goes upwards till <html>, and then to document object, and some events even reach window, calling all handlers on the path.
+
+
+bubbling means (start from the child to the parent, so bubbles up)
+capturing means (start from the parent to the child, so bottom to top)
+
+eventlisteners are by default bubbling (capture = false ) if you want to capture it from parent to child (top to bottom) then use set this to 'true' 
+
+like
+
+```
+parent.addEventListener('click', function () {
+  log('I am the parent');
+}, true); <----
+```
