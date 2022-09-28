@@ -5,16 +5,6 @@ import { randomPersonData } from './randomPersonData.js';
 
 // ***** COUNTRY LIST ********
 
-// const ULcontent = function (ul) {
-//   if (ul.style.display === 'block') {
-//     ul.classList.add('hide-content');
-//   }
-//   if (ul.style.display === 'none') {
-//     ul.classList.remove('hide-content');
-//     ul.classList.add('show-content');
-//   }
-// };
-
 const countryListBtn = document.querySelector('.countryList');
 
 const renderCountries = (listOfPeople) => {
@@ -38,7 +28,7 @@ const renderCountries = (listOfPeople) => {
 const cb = (e) => {
   renderCountries(randomPersonData);
   countryListBtn.removeEventListener('click', cb); // wordt hier al op de eerste klik weggehaald en er zit geen eventlistener meer hierop
-  log(e);
+  log(e); // cb functie moet een keer worden uitgevoerd en daarom verwijder je deze eventlistener
 };
 
 const showCountryList = () => {
@@ -204,19 +194,13 @@ const hasValidCreditCard = creditCardExpirationCheck(is18YearsOrAbove);
 log(hasValidCreditCard);
 
 const btnCreditCard = document.getElementById('credit-card');
-
-btnCreditCard.addEventListener('click', function (e) {
-  log(e);
-  createCreditCardList(hasValidCreditCard);
-});
-
-
-
+const divCreditCardList = document.createElement('div');
+document.body.appendChild(divCreditCardList);
 
 const createCreditCardList = function (listOfPeople) {
   listOfPeople.forEach(function (person) {
     const UL = document.createElement('ul');
-
+    // console.dir(UL)
     const createArray = Array.of(
       `First Name: ${person.name}`,
       `Last Name: ${person.surname}`,
@@ -225,23 +209,47 @@ const createCreditCardList = function (listOfPeople) {
       `Expiration date: ${person.credit_card['expiration']}`
     );
 
-    log(createArray.at(4)); // what is the value of index 4
+    // log(createArray.at(4)); // .at() method: what is the value of index 4?
 
     for (let i = 0; i < createArray.length; i++) {
       const li = document.createElement('li');
       li.innerText = createArray[i];
       UL.append(li);
     }
-    document.body.appendChild(UL);
+    divCreditCardList.appendChild(UL);
     UL.classList.add('margin');
   });
 
   log(listOfPeople);
 };
 
+const var1 = 'hello';
+log(var1);
+log(typeof btnCreditCard.style.display);
 
+const createAndRemove = function () {
+  createCreditCardList(hasValidCreditCard);
+  btnCreditCard.removeEventListener('click', createAndRemove); // dan wordt de functie niet weer aangeroepen de functie ervoor is al aangeroepen en staat al in de dom, maar de lijst wordt niet telkens weer gecreeerd bij de klik
 
+};
 
+const showOrHideCreditcardList = function () {
+  log(divCreditCardList.style.display);
+  divCreditCardList.style.display === 'block'
+    ? (divCreditCardList.style.display = 'none')
+    : (divCreditCardList.style.display = 'block');
+
+  // if (divCreditCardList.style.display === 'block') {
+  //   divCreditCardList.style.display = 'none';
+  // } else {
+  //   divCreditCardList.style.display = 'block';
+  // }
+};
+
+btnCreditCard.addEventListener('click', createAndRemove);
+btnCreditCard.addEventListener('click', showOrHideCreditcardList);
+
+/* +++++++ LIVELES ERROR ++++++
 // instance of error , maaer error moet je wel met een throw keyword doen 
  new Error('this is an error').message;
 
@@ -251,3 +259,20 @@ log(myError.name)
 log(myError.message)
 log(myError.stack) // laat zien waar in de stack de error gebeurd het gebeurd
 
+ */
+
+
+
+
+const buttonToggle = document.querySelector('button.toggleClass');
+log(buttonToggle);
+
+const toggleClass = function () {
+  const p = document.querySelector('#paragraph');
+  p.classList.toggle('hide');
+};
+
+buttonToggle.addEventListener('click', function () {
+  toggleClass();
+  log(this.innerText);
+});

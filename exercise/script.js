@@ -2,6 +2,10 @@
 
 const log = console.log;
 
+const ul = document.querySelector('ul')
+const special = ul.querySelector('.special')
+log(special)
+
 // === SORT Live Les ====
 //  - het wordt op de plaatst gesorteerd, dus het originele array wordt ook aangepast, maar GEEFT ook een nieuwe array terug. Dit is bij andere array Methods niet het geval.
 
@@ -180,6 +184,10 @@ child.addEventListener('click', function () {
   log('I am the child');
 });
 
+
+
+
+
 /* ====== COLOR PICKER ===== */
 
 const colors = [
@@ -201,13 +209,15 @@ const printColor = function (box) {
 
 const h1 = document.querySelector('h1');
 
-h1.addEventListener('mousover', function () {
+h1.addEventListener('mouseover', function () {
   log(this.innerText);
+  log('hello');
 });
 
 const changeColor = function () {
   h1.style.color = this.style.backgroundColor;
 };
+
 // CONTAINER
 const container = document.querySelector('#boxes');
 
