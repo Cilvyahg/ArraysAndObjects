@@ -309,7 +309,65 @@ css leest het bestand van boven naar beneden
 specificity is ook belangrijk. 
 
 
-mediaqueries 
+=====  JS ERRORS LIVELES ====
+
+Error object
+new Error()
+
+als er met de error wordt gegooid dan stopt tie met de huidige functie
+
+met the throw keyword weet de browser en javascript omgeving dat het een error is. Je stopt de huidige functie en ga naar de error handling. de executie stopt dus
+
+
+Error object heeft 3 properties 
+errorobject.name
+errorobject.stack
+errorobject.message 
+
+
+throw SyntaxError // de syntax bestaat niet in javascript 
+throw ReferenceError // je verwijst iets naar wat iets niet bestaat... something is not defined. dus bijv je roept iets aan wat niet bestaat
+
+als je geen try of catch impliciet schrijft dan gaat javascript dit zelf handelen als je dit impliciet wel codeert dan gaat js op zoek naar deze error handling. 
+
+###  try and catch block
+
+```
+try{ }
+```
+
+```
+catch()
+```
+
+```
+.catch() method
+```
+
+``` 
+finally {}
+```
+ finally wordt altijd uitgevoerd als ongeacht error of niet.
+
+#### .append() vs .appendChild()
+
+.append() is used to add an element in form of a Node object or a DOMString (text).  
+
+also .append() is not supported in Internet Explorer browser
+
+```
+parent.append(child) and also parent.append(child1, child2, child3)
+parent.append('Appending text') 
+```
+
+.appendChild() 
+this method is used to add elemements to the DOM but only accepts Node objects so not DOMstrings (text) 
+
+!!! note
+
+.append() does not have a return value WHILE
+ .appendChild() returns the appended Node object
+
 
 
 

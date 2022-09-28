@@ -1,6 +1,5 @@
 'use strict;';
 
-
 const log = console.log;
 
 // === SORT Live Les ====
@@ -169,10 +168,65 @@ log(fromScratch);
 const parent = document.getElementById('parent');
 const child = document.getElementById('child');
 
-parent.addEventListener('click', function () {
-  log('I am the parent');
-}, true);
+parent.addEventListener(
+  'click',
+  function () {
+    log('I am the parent');
+  },
+  true
+);
 
 child.addEventListener('click', function () {
   log('I am the child');
 });
+
+/* ====== COLOR PICKER ===== */
+
+const colors = [
+  'red',
+  'orange',
+  'yellow',
+  'green',
+  'blue',
+  'purple',
+  'indigo',
+  'violet',
+];
+
+const printColor = function (box) {
+  // log(this)
+  // log(this.style.backgroundColor); // reference to the item that has been clicked; so this refers the the object. in this situation the object is 'box'
+  log(box.style.backgroundColor);
+};
+
+const h1 = document.querySelector('h1');
+
+h1.addEventListener('mousover', function () {
+  log(this.innerText);
+});
+
+const changeColor = function () {
+  h1.style.color = this.style.backgroundColor;
+};
+// CONTAINER
+const container = document.querySelector('#boxes');
+
+const createDiv = () => {
+  for (let color of colors) {
+    // DIV
+    const box = document.createElement('div');
+    box.style.backgroundColor = color;
+    box.classList.add('box');
+    container.appendChild(box);
+
+    // box.addEventListener('click', printColor);
+
+    box.addEventListener('click', function () {
+      printColor(box);
+    });
+
+    box.addEventListener('click', changeColor); // with this
+  }
+};
+
+createDiv();

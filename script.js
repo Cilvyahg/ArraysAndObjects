@@ -1,5 +1,6 @@
 'use strict';
 const log = console.log;
+
 import { randomPersonData } from './randomPersonData.js';
 
 // ***** COUNTRY LIST ********
@@ -207,8 +208,10 @@ const btnCreditCard = document.getElementById('credit-card');
 btnCreditCard.addEventListener('click', function (e) {
   log(e);
   createCreditCardList(hasValidCreditCard);
-  this.disabled = true;
 });
+
+
+
 
 const createCreditCardList = function (listOfPeople) {
   listOfPeople.forEach(function (person) {
@@ -236,4 +239,15 @@ const createCreditCardList = function (listOfPeople) {
   log(listOfPeople);
 };
 
+
+
+
+// instance of error , maaer error moet je wel met een throw keyword doen 
+ new Error('this is an error').message;
+
+ // error heeft drie properties
+const myError = new Error('oh no!!')
+log(myError.name)
+log(myError.message)
+log(myError.stack) // laat zien waar in de stack de error gebeurd het gebeurd
 
