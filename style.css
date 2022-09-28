@@ -12,3 +12,9 @@ button {
   list-style-type: none;
 }
 
+.margin {
+  margin: 0.8rem 0;
+  list-style-type: none;
+  border: 1px black solid;
+  max-width: 40%;
+}

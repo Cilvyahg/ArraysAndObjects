@@ -302,3 +302,15 @@ parent.addEventListener('click', function () {
   log('I am the parent');
 }, true); <----
 ```
+
+=== liveles responsive design ====
+
+css leest het bestand van boven naar beneden
+specificity is ook belangrijk. 
+
+
+mediaqueries 
+
+
+
+

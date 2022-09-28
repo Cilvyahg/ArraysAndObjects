@@ -228,11 +228,8 @@ const createCreditCardList = function (listOfPeople) {
       UL.append(li);
     }
 
-
-    //classlist toevoegen aan elke UL. 
     document.body.appendChild(UL);
-
-    log(createArray);
+    UL.classList.add('margin')
 
     // UL.append(balabalabal, balaalaka)
   });
