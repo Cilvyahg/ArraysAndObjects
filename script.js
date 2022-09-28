@@ -134,7 +134,7 @@ const isCapricorn = function (birthday) {
 
 log(isCapricorn(mybday2));
 
-/* ******* CREDITCARDEXPIRED */
+/******** CREDITCARDEXPIRED *******/
 
 const today = new Date(); //huidige datum.
 const currentYear = today.getFullYear(); //current year : 2022
@@ -207,6 +207,7 @@ const btnCreditCard = document.getElementById('credit-card');
 btnCreditCard.addEventListener('click', function (e) {
   log(e);
   createCreditCardList(hasValidCreditCard);
+  this.disabled = true;
 });
 
 const createCreditCardList = function (listOfPeople) {
@@ -221,18 +222,18 @@ const createCreditCardList = function (listOfPeople) {
       `Expiration date: ${person.credit_card['expiration']}`
     );
 
-    log(createArray.at(0));
+    log(createArray.at(4)); // what is the value of index 4
+
     for (let i = 0; i < createArray.length; i++) {
       const li = document.createElement('li');
-      log((li.innerText = createArray[i]));
+      li.innerText = createArray[i];
       UL.append(li);
     }
-
     document.body.appendChild(UL);
-    UL.classList.add('margin')
-
-    // UL.append(balabalabal, balaalaka)
+    UL.classList.add('margin');
   });
 
   log(listOfPeople);
 };
+
+
