@@ -229,15 +229,18 @@ log(typeof btnCreditCard.style.display);
 
 const createAndRemove = function () {
   createCreditCardList(hasValidCreditCard);
-  btnCreditCard.removeEventListener('click', createAndRemove); // dan wordt de functie niet weer aangeroepen de functie ervoor is al aangeroepen en staat al in de dom, maar de lijst wordt niet telkens weer gecreeerd bij de klik
-
+  // btnCreditCard.removeEventListener('click', createAndRemove); // dan wordt de functie niet weer aangeroepen de functie ervoor is al aangeroepen en staat al in de dom, maar de lijst wordt niet telkens weer gecreeerd bij de klik
+  
 };
 
 const showOrHideCreditcardList = function () {
-  log(divCreditCardList.style.display);
+  log(`my initial status is ${divCreditCardList.style.display}`);
+
   divCreditCardList.style.display === 'block'
     ? (divCreditCardList.style.display = 'none')
     : (divCreditCardList.style.display = 'block');
+  
+  log(`my status after the condition: ${divCreditCardList.style.display}`); 
 
   // if (divCreditCardList.style.display === 'block') {
   //   divCreditCardList.style.display = 'none';
@@ -246,21 +249,11 @@ const showOrHideCreditcardList = function () {
   // }
 };
 
-btnCreditCard.addEventListener('click', createAndRemove);
+btnCreditCard.addEventListener('click', function () {
+  createAndRemove();
+}, { once: true }); // so the eventlistener will be executed once and than it will remove itself instead of that you have to add removeeventlistener on the object
+
 btnCreditCard.addEventListener('click', showOrHideCreditcardList);
-
-/* +++++++ LIVELES ERROR ++++++
-// instance of error , maaer error moet je wel met een throw keyword doen 
- new Error('this is an error').message;
-
- // error heeft drie properties
-const myError = new Error('oh no!!')
-log(myError.name)
-log(myError.message)
-log(myError.stack) // laat zien waar in de stack de error gebeurd het gebeurd
-
- */
-
 
 
 
@@ -276,3 +269,15 @@ buttonToggle.addEventListener('click', function () {
   toggleClass();
   log(this.innerText);
 });
+
+/* +++++++ LIVELES ERROR ++++++
+// instance of error , maaer error moet je wel met een throw keyword doen 
+ new Error('this is an error').message;
+
+ // error heeft drie properties
+const myError = new Error('oh no!!')
+log(myError.name)
+log(myError.message)
+log(myError.stack) // laat zien waar in de stack de error gebeurd het gebeurd
+
+ */
