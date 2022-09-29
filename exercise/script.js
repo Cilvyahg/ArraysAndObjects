@@ -1,10 +1,10 @@
 'use strict;';
-
 const log = console.log;
 
 const ul = document.querySelector('ul');
 const special = ul.querySelector('.special');
 log(special);
+
 
 // === SORT Live Les ====
 //  - het wordt op de plaatst gesorteerd, dus het originele array wordt ook aangepast, maar GEEFT ook een nieuwe array terug. Dit is bij andere array Methods niet het geval.
@@ -249,3 +249,84 @@ buttonToggle.addEventListener('click', function () {
   toggleClass();
   log(this.innerText);
 });
+
+// get all the styles that are defined in CSS
+log(getComputedStyle(buttonToggle).color)
+log(getComputedStyle(buttonToggle))
+
+log(buttonToggle.style.height = Number.parseFloat(getComputedStyle(buttonToggle).height, 10) + 30 + 'px');
+
+
+
+
+
+
+
+
+// IF statements
+
+const hasDriversLicense = true; // A variables
+const hasGoodVision = true; // B variables
+const hasGoodVision2 = false;
+
+log(hasDriversLicense && hasGoodVision); // the result of true and true is TRUE
+log(hasDriversLicense || hasGoodVision); // enough for one of the variables to be true to result in true
+log(!hasDriversLicense);
+
+if (hasDriversLicense && hasGoodVision2) {
+  log('Sara is able to drive');
+} else {
+  log('someone else should drive');
+}
+
+const isTired = true; // C variable
+
+log(hasDriversLicense || hasGoodVision || isTired);
+log(hasDriversLicense && hasGoodVision && !isTired); // and if she is not tired.
+
+//* ========= SWITCH STATEMENT ============ */ 
+// alternative is write..when we want to compare one value
+// without the break the code will continue executing
+// it does a strict comparison ===
+
+
+const day = 'thursday';
+
+switch (day) {
+  case 'monday': // day === 'monday' <-- this is how it will be checked
+    log(`Plan my course structure`);
+    // you can execute multiple code in here .. you don't need curly braces here.
+    break;
+  case 'tuesday':
+    log('prepare theory videos');
+    break;
+  case 'wednesday':
+  case 'thursday':
+    log('on wednesday and thursday I write code examples');
+    break;
+  case 'friday':
+    log('Record videos');
+    break;
+  case 'saturday':
+  case 'sunday':
+    log(' ENJOYING THE WEEKEND');
+  default: // it's like and else block in if-else statement
+    log('not a valid day');
+}
+
+
+// when it's in a IF-ELSE statement .. you see we write quite lot of repetitive code like day === 
+
+if (day === 'monday') {
+  log('monday')
+} else if (day === 'tuesday') {
+  log('tuesday')
+} else if (day === 'wednesday' || day === 'thursday') {
+  log('wednesday and thursday')
+} else if (day === 'friday') {
+  log('friday')
+} else if (day === 'saturday' || day === 'sunday') {
+  log('its the weekend')
+} else log('not a valid day')
+
+

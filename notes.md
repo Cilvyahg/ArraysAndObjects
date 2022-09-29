@@ -368,8 +368,18 @@ this method is used to add elemements to the DOM but only accepts Node objects s
 .append() does not have a return value WHILE
  .appendChild() returns the appended Node object
 
-### live les Fast UI with backend pattern
+## BROWSER EVENTS
 
+EventListeners. An eventlistener is something you assign to an object. as the name suggests, the event listener listens for events and gets triggered when an event occurs (like for example a click, mouseover). clicking the button below triggerd ```click``` event, which in turn runs a block of code. 
+
+```
+const button = document.querySelector(".btn")
+
+button.addEventListener("click", () => {
+  console.log("Button clicked.");
+})
+
+```
 
 
 

@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&display=swap');
+
+:root {
+  --header-fs: Chakra Petch, sans-serif;
+}
+
+body {
+  width: 100vw;
+
+}
+
+.header {
+ font-family: var(--header-fs);
+ font-weight: lighter;
+
+}
+
