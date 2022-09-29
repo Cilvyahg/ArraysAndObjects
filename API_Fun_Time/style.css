@@ -11,13 +11,70 @@
 }
 
 body {
-  width: 100vw;
-
+  background-color: rgb(113, 63, 63);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .header {
- font-family: var(--header-fs);
- font-weight: lighter;
-
+  font-family: var(--header-fs);
+  font-weight: lighter;
+  margin: 6rem 0;
+  font-size: 1.5rem;
+  font-style: italic;
+  color: rgb(205, 192, 192);
+  text-align: center;
 }
 
+.header::before {
+  content: "\201C";
+  color: red;
+}
+
+.header::after {
+  content: "\201D";
+  color: red;
+}
+
+
+.container {
+  width: 50%;
+  max-width: 60%;
+  background-color: rgb(236, 239, 238);
+  height: 40vh;
+  border-radius: 10px;
+}
+
+.activitiesToDo {
+  width: 100%;
+  height: auto;
+  list-style-type: none;
+}
+
+
+#btn-bored {
+  height: 3rem;
+  width: 8rem;
+  text-transform: uppercase;
+  margin-top: 5px;
+  background: rgb(228, 219, 221);
+}
+
+/* .activitiesToDo::before {
+  content: 'hello ';
+  width: 40px;
+  height: 20px;
+  background: rgb(202, 67, 67);
+  position: absolute;
+}
+
+.activitiesToDo::after {
+  content: ' ';
+  width: 20px;
+  height: 20px;
+  background-color: black;
+  position: absolute;
+} */
