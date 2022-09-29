@@ -36,14 +36,18 @@ const showCountryList = () => {
   countryList.style.display = 'block';
   const capriCornWomenList = document.querySelector('#capricorn-women');
 
-  if (capriCornWomenList !== null) {
+  if (capriCornWomenList !== null && divCreditCardList !== null) {
     // als capricornwomenlist een UL is dan wil je het verbergen
+    // als divCreditCardList niet een null is en dus er wel is op dat moment dan verbergen 
     capriCornWomenList.style.display = 'none';
+    divCreditCardList.style.display = 'none';
   }
 };
 
 countryListBtn.addEventListener('click', cb);
 countryListBtn.addEventListener('click', showCountryList);
+
+
 
 //  ******* CAPRICON WOMEN ********
 
@@ -125,7 +129,7 @@ const isCapricorn = function (birthday) {
 
 log(isCapricorn(mybday2));
 
-/******** CREDITCARDEXPIRED *******/
+/* ******* CREDITCARD EXPIRED ****** */
 
 const today = new Date(); //huidige datum.
 const currentYear = today.getFullYear(); //current year : 2022
@@ -230,7 +234,7 @@ log(typeof btnCreditCard.style.display);
 const createAndRemove = function () {
   createCreditCardList(hasValidCreditCard);
   // btnCreditCard.removeEventListener('click', createAndRemove); // dan wordt de functie niet weer aangeroepen de functie ervoor is al aangeroepen en staat al in de dom, maar de lijst wordt niet telkens weer gecreeerd bij de klik
-  
+
 };
 
 const showOrHideCreditcardList = function () {
@@ -255,20 +259,6 @@ btnCreditCard.addEventListener('click', function () {
 
 btnCreditCard.addEventListener('click', showOrHideCreditcardList);
 
-
-
-const buttonToggle = document.querySelector('button.toggleClass');
-log(buttonToggle);
-
-const toggleClass = function () {
-  const p = document.querySelector('#paragraph');
-  p.classList.toggle('hide');
-};
-
-buttonToggle.addEventListener('click', function () {
-  toggleClass();
-  log(this.innerText);
-});
 
 /* +++++++ LIVELES ERROR ++++++
 // instance of error , maaer error moet je wel met een throw keyword doen 

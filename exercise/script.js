@@ -2,9 +2,9 @@
 
 const log = console.log;
 
-const ul = document.querySelector('ul')
-const special = ul.querySelector('.special')
-log(special)
+const ul = document.querySelector('ul');
+const special = ul.querySelector('.special');
+log(special);
 
 // === SORT Live Les ====
 //  - het wordt op de plaatst gesorteerd, dus het originele array wordt ook aangepast, maar GEEFT ook een nieuwe array terug. Dit is bij andere array Methods niet het geval.
@@ -184,10 +184,6 @@ child.addEventListener('click', function () {
   log('I am the child');
 });
 
-
-
-
-
 /* ====== COLOR PICKER ===== */
 
 const colors = [
@@ -240,3 +236,16 @@ const createDiv = () => {
 };
 
 createDiv();
+
+const buttonToggle = document.querySelector('button.toggleClass');
+log(buttonToggle);
+
+const toggleClass = function () {
+  const p = document.querySelector('#paragraph');
+  p.classList.toggle('hide');
+};
+
+buttonToggle.addEventListener('click', function () {
+  toggleClass();
+  log(this.innerText);
+});
