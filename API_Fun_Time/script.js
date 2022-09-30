@@ -4,6 +4,7 @@ const log = console.log;
 
 const btnBored = document.getElementById('btn-bored');
 const activitiesList = document.querySelector('.activitiesToDo');
+const container = activitiesList.parentElement;
 
 const fetchingBoredAPI = async function () {
   try {
@@ -11,26 +12,42 @@ const fetchingBoredAPI = async function () {
       method: 'GET',
     });
     const activitiesData = await response.json();
-    log(activitiesData);
 
-    const li1 = activitiesList.children[0];
-    const li2 = activitiesList.children[1];
-    const li3 = activitiesList.children[2];
-    const li4 = activitiesList.children[3];
+    const allLi = document.querySelectorAll('.li')
 
-    log(li1, li2, li3, li4);
-
-    li1.innerHTML = `<strong>Activity</strong> : ${activitiesData.activity}`
-    li2.innerHTML = `<strong>Type</strong> : ${activitiesData.activity}`;
-    li3.innerHTML = `<strong>Participants</strong> : ${activitiesData.activity}`;
-    li4.innerHTML = `<strong>Link</strong> : <a href= ${activitiesData.link}>${activitiesData.link}</a>`;
-
-
-  } catch (err) {
-    log(`this is the error: ${err}`);
+    const li1 = allLi[0]
+    const li2 = allLi[1]
+    const li3 = allLi[2]
+    const li4 = allLi[3]
+    
+    li1.innerHTML = `<strong>Activity</strong>: ${activitiesData.activity}`;
+    li2.innerHTML = `<strong>Type</strong>: ${activitiesData.activity}`;
+    li3.innerHTML = `<strong>Participants</strong>: ${activitiesData.activity}`;
+    li4.innerHTML = `<strong>Link</strong>: <a href= ${activitiesData.link}>${activitiesData.link}</a>`;
+  
+  } catch (error) {
+    log(`THIS IS THE ERROR ${error}`);
   }
 };
+
 
 btnBored.addEventListener('click', function () {
   fetchingBoredAPI();
 });
+
+const activitiesStyling = async () => {
+ container.style.visibility = 'visible';
+ container.style.opacity = '1';
+}
+
+
+btnBored.addEventListener('click', function (e) {
+  activitiesStyling()
+})
+
+// TODO ALS LINK LEEG IS LAAT HET DAN NIET ZIEN
+// HET VENSTER MOET IN HET BEGIN LEEG ZIJN.
+// andere functies schrijven cleaner
+// desktopversie
+// min width max width
+// position absolute;
