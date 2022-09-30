@@ -175,16 +175,48 @@ body,
   color: white;
 }
 
+@media screen and (max-width: 360px) {
+  .header p {
+    font-size: 1.9rem;
+  }
 
-@media screen and (max-width: 468px) {
-  .header{
+  #intro-text {
+    margin-top: 3rem;
+  }
+
+  #intro-text h3 > p {
+    font-size: 1.4rem;
+    line-height: 1.5rem;
+  }
+
+  .container {
+    width: 80%;
+    height: 35vh;
+  }
+
+  .activitiesToDo > * {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 361px) and (max-width: 768px) {
+  .header {
     font-size: 2.5rem;
   }
+
+  #intro-text {
+    margin-bottom: 3rem;
+  }
   #intro-text h3 p {
-    font-size: 1.3rem;
-    
+    font-size: 1.8rem;
+    line-height: 2rem;
   }
   .container {
     width: 80%;
+    height: 40vh;
+  }
+
+  .activitiesToDo > * {
+    font-size: 1.2rem;
   }
 }
