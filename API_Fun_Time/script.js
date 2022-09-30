@@ -13,6 +13,7 @@ const fetchingBoredAPI = async function () {
     const response = await fetch('http://www.boredapi.com/api/activity/', {
       method: 'GET',
     });
+    
     const activitiesData = await response.json();
 
     intro.style.display = 'none';
@@ -25,8 +26,8 @@ const fetchingBoredAPI = async function () {
     li1.innerHTML = `<strong>Activity</strong>: ${activitiesData.activity}`;
     li2.innerHTML = `<strong>Type</strong>: ${activitiesData.type}`;
     li3.innerHTML = `<strong>Participants</strong>: ${activitiesData.participants}`;
-    log(activitiesData);
-    log(Boolean(activitiesData.link));
+    // log(activitiesData);
+    // log(Boolean(activitiesData.link));
 
     if (activitiesData.link) {
       li4.innerHTML = `<a href= ${activitiesData.link} target="_blank">Visit Page</a>`;
@@ -34,8 +35,8 @@ const fetchingBoredAPI = async function () {
     } else {
       li4.innerHTML = ''; // je moet wel een false zetten en de lijst leegmaken, anders blijft het de volgende keer gewoon de oude link staan omdat je niet zegt wat je moet doen met false
     }
-  } catch (error) {
-    log(`THIS IS THE ERROR ${error}`);
+  } catch (error) { // error is a object
+    return `THIS IS THE ERROR ${error}`;
   }
 };
 

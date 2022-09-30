@@ -6,6 +6,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
 :root {
   --ff--chakra: Chakra Petch, sans-serif;
@@ -46,7 +47,6 @@ body,
   animation: flip 2500ms linear infinite;
 }
 
-
 .header p:nth-child(1) {
   animation-delay: 100ms;
 }
@@ -73,7 +73,8 @@ body,
 }
 
 @keyframes flip {
-  0%, 80% {
+  0%,
+  80% {
     transform: rotateY(360deg);
   }
 }
@@ -103,13 +104,13 @@ body,
   top: 50%;
   transform: translateY(-50%);
   line-height: 2.8rem;
-  font-family: var(--ff-raleway);
-  font-weight: 100;
+  font-family: 'Anton', sans-serif;
+  font-weight: 200;
   color: rgb(173, 40, 40);
 }
 
 .container {
-  max-width: 60%;
+  /* max-width: 60%; */
   width: 50%;
   background: rgba(255, 255, 255, 0.32);
   height: 40vh;
@@ -172,4 +173,18 @@ body,
   background-color: rgb(28, 18, 63);
   transition: background-color 500ms ease-out;
   color: white;
+}
+
+
+@media screen and (max-width: 468px) {
+  .header{
+    font-size: 2.5rem;
+  }
+  #intro-text h3 p {
+    font-size: 1.3rem;
+    
+  }
+  .container {
+    width: 80%;
+  }
 }
