@@ -42,34 +42,39 @@ body,
   color: #fff;
   text-align: center;
 }
+
+.header p:nth-child(4) {
+  margin-left: 1rem;
+}
+
 .header p {
   display: inline-block;
   animation: flip 2500ms linear infinite;
 }
 
 .header p:nth-child(1) {
-  animation-delay: 100ms;
+  animation-delay: 50ms;
 }
 .header p:nth-child(2) {
-  animation-delay: 200ms;
+  animation-delay: 100ms;
 }
 .header p:nth-child(3) {
-  animation-delay: 300ms;
+  animation-delay: 150ms;
 }
 .header p:nth-child(4) {
-  animation-delay: 400ms;
+  animation-delay: 200ms;
 }
 .header p:nth-child(5) {
-  animation-delay: 500ms;
+  animation-delay: 250ms;
 }
 .header p:nth-child(6) {
-  animation-delay: 600ms;
+  animation-delay: 300ms;
 }
 .header p:nth-child(7) {
-  animation-delay: 700ms;
+  animation-delay: 350ms;
 }
 .header p:nth-child(8) {
-  animation-delay: 800ms;
+  animation-delay: 400ms;
 }
 
 @keyframes flip {
@@ -176,17 +181,18 @@ body,
 }
 
 @media screen and (max-width: 360px) {
+
   .header p {
     font-size: 1.9rem;
   }
 
   #intro-text {
-    margin-top: 3rem;
+    margin-top: 4rem;
   }
 
   #intro-text h3 > p {
-    font-size: 1.4rem;
-    line-height: 1.5rem;
+    font-size: 1.6rem;
+    line-height: 1.8rem;
   }
 
   .container {
@@ -205,8 +211,9 @@ body,
   }
 
   #intro-text {
-    margin-bottom: 3rem;
+    margin-top : 1.5rem;
   }
+
   #intro-text h3 p {
     font-size: 1.8rem;
     line-height: 2rem;
