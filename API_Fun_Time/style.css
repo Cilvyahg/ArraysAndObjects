@@ -131,7 +131,6 @@ body,
 .activitiesToDo {
   width: 100%;
   border: 2px solid black;
-  overflow-wrap: break-word;
   list-style: none;
   font-size: 0.9rem;
   text-align: center;
@@ -140,13 +139,16 @@ body,
   padding: 4rem;
   text-overflow:ellipsis;
   overflow-y: scroll;
+ 
 }
+
+
 
 .activitiesToDo > * {
   line-height: 2rem;
   font-size: 1.4rem;
   text-transform: uppercase;
- 
+  
 }
 
 #link a {

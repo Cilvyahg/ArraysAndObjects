@@ -37,24 +37,26 @@ const fetchingBoredAPI = async function () {
     }
   } catch (error) {
     // error is a object
-    return `THIS IS THE ERROR ${error}`;
+    log(`THIS IS THE ERROR ${error}`);
   }
 };
 
 const activitiesStyling = () => {
+
   container.style.opacity = 0;
-  allLi.forEach(function (li) {
-    li.style.opacity = 0;
-  });
+  // allLi.forEach(function (li) {
+  //   li.style.opacity = 0;
+  // });
 
   setTimeout(() => {
     container.style.transition = 'opacity 100ms ease-out';
     container.style.opacity = 1;
 
-    for (let li of allLi) {
-      li.style.transition = 'opacity 0ms 50ms';
-      li.style.opacity = 1;
-    }
+    // for (let li of allLi) {
+    //   li.style.transition = 'opacity 0ms 50ms';
+    //   li.style.opacity = 1;
+    // }
+
   }, 300);
 };
 
