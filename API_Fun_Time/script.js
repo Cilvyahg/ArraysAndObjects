@@ -30,7 +30,7 @@ const fetchingBoredAPI = async function () {
     // log(Boolean(activitiesData.link));
 
     if (activitiesData.link) {
-      li4.innerHTML = `<a href= ${activitiesData.link} target="_blank">Visit Page</a>`;
+      li4.innerHTML = `<a href= ${activitiesData.link} target="_blank">Read more</a>`;
       // als het true is dat er een link value is dan maak dit aan
     } else {
       li4.innerHTML = ''; // je moet wel een false zetten en de lijst leegmaken, anders blijft het de volgende keer gewoon de oude link staan omdat je niet zegt wat je moet doen met false
